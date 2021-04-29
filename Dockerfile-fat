@@ -1,0 +1,8 @@
+ARG RUBY_VERSION=3.0.1
+
+FROM bauk/rails:${RUBY_VERSION}
+
+RUN mkdir -p /tmp/node-gyp \
+ && cd /tmp/node-gyp/ \
+ && wget http://nodejs.org/download/release/$(node --version)/node-$(node --version)-headers.tar.gz \
+ && npm config set tarball /tmp/node-gyp/node-$(node --version)-headers.tar.gz
